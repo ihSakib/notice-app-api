@@ -1,8 +1,11 @@
 package org.example.restapi.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.time.LocalDate;
 
 @Entity
 public class Notice {
@@ -14,10 +17,12 @@ public class Notice {
     private String title;
     private String description;
     private String url;
-    private String date;
+
+    @Column(name = "date")
+    private LocalDate date;
 
 
-    public Notice(int id, String title, String description, String url, String date) {
+    public Notice(int id, String title, String description, String url, LocalDate date) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -25,8 +30,6 @@ public class Notice {
         this.date = date;
     }
 
-
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -35,11 +38,11 @@ public class Notice {
         this.id = id;
     }
 
-    public String getTitle() {  // Fixed typo from 'getTile' to 'getTitle'
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {  // Fixed typo
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -59,11 +62,11 @@ public class Notice {
         this.url = url;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }

@@ -3,6 +3,7 @@ package org.example.restapi.service;
 import org.example.restapi.model.Notice;
 import org.example.restapi.repository.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -16,7 +17,11 @@ public class NoticeService {
     private NoticeRepository noticeRepository;
 
     public List<Notice> getNotices() {
-        return noticeRepository.findAll();
+        return noticeRepository.findAll(sortByDateDesc());
+    }
+
+    private Sort sortByDateDesc() {
+        return Sort.by(Sort.Order.desc("date"));
     }
 
     public Object getNoticeById(int id) {
